@@ -110,7 +110,10 @@ struct MovieRatingsView: View {
             ReviewsSheet(reviews: viewModel.currentMovie.reviews)
         }
         .sheet(isPresented: $viewModel.showRatingsView) {
-            RatingsListView(viewModel: viewModel)
+            RatingsListView(viewModel: viewModel) { selectedMovie in
+                viewModel.currentMovie = selectedMovie
+                viewModel.showRatingsView = false
+            }
         }
         .alert("No Reviews", isPresented: $showNoReviewsAlert) {
                     Button("OK", role: .cancel) {}
