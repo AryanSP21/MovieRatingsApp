@@ -5,13 +5,20 @@
 
 import Foundation
 
-struct Movie: Identifiable {
+struct Review: Identifiable, Codable {
+    let id = UUID()
+    var rating: Int
+    var text: String
+}
+
+struct Movie: Identifiable, Codable {
     let id = UUID()
     let title: String
     let year: Int
     let description: String
     let posterImage: String
     var rating: Int
+    var reviews: [Review] = []
     
     static let allMovies: [Movie] = [
         Movie(title: "Back To The Future", year: 1985, description: "Eighties teenager Marty McFly is accidentally sent back in time to 1955, inadvertently disrupting his parents' first meeting...", posterImage: "back_to_the_future", rating: 0),

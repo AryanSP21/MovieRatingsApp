@@ -17,6 +17,22 @@ class ViewModel: ObservableObject {
         currentMovie = movies[currentMovieIndex]
     }
     
+    func addReview(to movie: Movie, review: String, rating: Int) {
+        if let index = movies.firstIndex(where: { $0.id == movie.id }) {
+            let newReview = Review(rating: rating, text: review)
+            
+            if movies[index].reviews.isEmpty {
+                movies[index].reviews = [newReview]
+            } else {
+                movies[index].reviews[0] = newReview // replace/edit existing review
+            }
+            
+            movies[index].rating = rating
+            currentMovie = movies[index]
+        }
+    }
+
+    
     func getNextMovie() {
         currentMovieIndex = (currentMovieIndex + 1) % movies.count
         currentMovie = movies[currentMovieIndex]
