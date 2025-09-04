@@ -23,7 +23,7 @@ struct ReviewsSheet: View {
                     }
                     
                     // Review text
-                    Text(review.text)
+                    Text(review.text.isEmpty ? "No text provided" : review.text)
                         .font(.subheadline)
                         .foregroundColor(.primary)
                 }

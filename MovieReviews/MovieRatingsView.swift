@@ -5,6 +5,7 @@ struct MovieRatingsView: View {
     @State private var selectedRating: Int = 0
     @State private var reviewText: String = ""
     @State private var showingReviews = false
+    @State private var showNoReviewsAlert = false
     
     var body: some View {
         ZStack {
@@ -61,36 +62,37 @@ struct MovieRatingsView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
 
-                    Button("Submit Review") {
-                        if !reviewText.isEmpty {
-                            viewModel.addReview(to: viewModel.currentMovie, review: reviewText, rating: selectedRating)
+                    // Buttons (Submit Review, Next Movie, View Reviews)
+                    VStack(spacing: 15) {
+                        // Submit Review
+                        Button("Submit Review") {
+                               viewModel.addReview(to: viewModel.currentMovie,
+                                                   review: reviewText,  // can be empty, incase user wants to leave a rating (out of 5), but not a text review
+                                                   rating: selectedRating)
+                               reviewText = ""  // clear text field
                         }
-                    }
-                    .padding()
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-
-
-                    Button("Next Movie") {
-                        viewModel.rateMovie(rating: selectedRating)
-                        viewModel.getNextMovie()
-                        selectedRating = viewModel.currentMovie.rating
-                    }
-                    .padding()
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    
-                    if !viewModel.currentMovie.reviews.isEmpty {
+                        .buttonStyle(GradientButtonStyle(backgroundColor: .green))
+                        
+                        // View Reviews (always visible)
                         Button("View Reviews") {
-                            showingReviews = true
+                            if viewModel.currentMovie.reviews.isEmpty {
+                                showNoReviewsAlert = true
+                            } else {
+                                showingReviews = true
+                            }
                         }
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .buttonStyle(GradientButtonStyle(backgroundColor: .blue))
+                        
+                        // Next Movie
+                        Button("Next Movie") {
+                            viewModel.rateMovie(rating: selectedRating)
+                            viewModel.getNextMovie()
+                            selectedRating = viewModel.currentMovie.rating
+                        }
+                        .buttonStyle(GradientButtonStyle(backgroundColor: .orange))
+                        
                     }
+                    .padding(.top)
                 }
             }
             .padding()
@@ -110,5 +112,25 @@ struct MovieRatingsView: View {
         .sheet(isPresented: $viewModel.showRatingsView) {
             RatingsListView(viewModel: viewModel)
         }
+        .alert("No Reviews", isPresented: $showNoReviewsAlert) {
+                    Button("OK", role: .cancel) {}
+        } message: {
+            Text("There are currently no reviews")
+        }
+    }
+}
+
+struct GradientButtonStyle: ButtonStyle {
+    var backgroundColor: Color
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(backgroundColor.opacity(configuration.isPressed ? 0.7 : 1.0))
+            .foregroundColor(.white)
+            .cornerRadius(12)
+            .shadow(radius: 5)
     }
 }
