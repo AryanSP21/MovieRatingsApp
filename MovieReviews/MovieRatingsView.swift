@@ -153,8 +153,8 @@ struct MovieRatingsView: View {
         }
         .onChange(of: viewModel.currentMovie.id) {
             if let existingReview = viewModel.currentMovie.reviews.first {
-                reviewText = existingReview.text          // ← use struct field
-                selectedRating = existingReview.rating     // ← use struct field
+                reviewText = existingReview.text
+                selectedRating = existingReview.rating
             } else {
                 reviewText = ""
                 selectedRating = 0
@@ -175,12 +175,6 @@ struct MovieRatingsView: View {
         } message: {
             Text("There are currently no reviews")
         }
-//        .onAppear {
-//            loadUserReview()
-//        }
-//        .onChange(of: viewModel.currentMovie.id) {
-//            loadUserReview()
-//        }
         .onAppear {
             loadUserReview()
             viewModel.startListeningForReviews(movieId: viewModel.currentMovie.id)
