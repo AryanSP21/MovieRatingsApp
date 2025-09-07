@@ -26,20 +26,20 @@
 - **Firebase Firestore:** Real-time database for storing and retrieving reviews.
 - **Git:** Version control and collaborative development.
 
-## Project Structure
-MovieReviews/
-├─ Preview Content/            # SwiftUI preview assets
-├─ Assets/                     # App images, icons, and other assets (Movie Posters and images)
-├─ AuthViewModel.swift         # Handles authentication logic (login/signup)
-├─ ContentView.swift           # Entry point for the app UI
-├─ FirestoreManager.swift      # Handles Firebase Firestore operations
-├─ LoginView.swift             # Login and SignUp UI
-├─ Movie.swift                 # Movie and Review model structure
-├─ MovieRatingsView.swift      # Main Screen that displays the list of movies in the database, including the title, poster, description, release year, average rating (out of 5), and reviews, and contains the buttons for other app functionalities
-├─ MovieReviewsApp.swift       # App lifecycle entry point
-├─ RatingsListView.swift       # List of your own ratings/reviews that you have left for movies
-├─ ReviewsSheet.swift          # Sheet UI for desplaying all reviews left from any user in the database 
-├─ ViewModel.swift             # Main view model handling app data and changing views
+## Project Structure in MovieReviews/
+- **Preview Content/** – SwiftUI preview assets  
+- **Assets/** – App images, icons, and other assets (movie posters and images)  
+- **AuthViewModel.swift** – Handles authentication logic (login/signup)  
+- **ContentView.swift** – Entry point for the app UI  
+- **FirestoreManager.swift** – Handles Firebase Firestore operations  
+- **LoginView.swift** – Login and Sign Up UI  
+- **Movie.swift** – Movie and Review model structure  
+- **MovieRatingsView.swift** – Main screen displaying the list of movies, including title, poster, description, release year, average rating (out of 5), and reviews. Also includes buttons for other app functionalities  
+- **MovieReviewsApp.swift** – App lifecycle entry point  
+- **RatingsListView.swift** – Displays a list of your own ratings/reviews for movies  
+- **ReviewsSheet.swift** – Sheet UI displaying all reviews left by any user in the database  
+- **ViewModel.swift** – Main view model handling app data and managing screen transitions  
+
 
 ## Getting Started 
 1. Open the project in **Xcode**.
