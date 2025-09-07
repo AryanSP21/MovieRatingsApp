@@ -113,7 +113,7 @@ struct MovieRatingsView: View {
                             viewModel.addReview(to: viewModel.currentMovie, review: reviewText, rating: selectedRating, userId: user.uid, username: user.email ?? "Anonymous")
 
                         }
-                        .buttonStyle(GradientButtonStyle(backgroundColor: .green))
+                        .buttonStyle(GradientButtonStyle(backgroundColor: .pink))
                         
                         // View Reviews (always visible)
                         Button("View Reviews") {
@@ -123,7 +123,7 @@ struct MovieRatingsView: View {
                                 showingReviews = true
                             }
                         }
-                        .buttonStyle(GradientButtonStyle(backgroundColor: .blue))
+                        .buttonStyle(GradientButtonStyle(backgroundColor: .purple))
                         
                         // Next Movie
                         Button("Next Movie") {
@@ -131,7 +131,7 @@ struct MovieRatingsView: View {
                             viewModel.getNextMovie()
                             selectedRating = viewModel.currentMovie.rating
                         }
-                        .buttonStyle(GradientButtonStyle(backgroundColor: .orange))
+                        .buttonStyle(GradientButtonStyle(backgroundColor: .blue))
                         
                         HStack {
                             Spacer()
