@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8EAF23C62E6A42DD002D3F14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EAF23C52E6A42DD002D3F14 /* GoogleService-Info.plist */; };
+		8EAF23C92E6A46E1002D3F14 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAF23C82E6A46E1002D3F14 /* FirebaseAuth */; };
+		8EAF23CB2E6A46E1002D3F14 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAF23CA2E6A46E1002D3F14 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		8E8C4EE82D53C3820065CE27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +33,7 @@
 		8E8C4ED72D53C3810065CE27 /* MovieReviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieReviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8C4EE72D53C3820065CE27 /* MovieReviewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieReviewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8C4EF12D53C3820065CE27 /* MovieReviewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieReviewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EAF23C52E6A42DD002D3F14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EAF23C92E6A46E1002D3F14 /* FirebaseAuth in Frameworks */,
+				8EAF23CB2E6A46E1002D3F14 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +88,7 @@
 				8E8C4EEA2D53C3820065CE27 /* MovieReviewsTests */,
 				8E8C4EF42D53C3820065CE27 /* MovieReviewsUITests */,
 				8E8C4ED82D53C3810065CE27 /* Products */,
+				8EAF23C52E6A42DD002D3F14 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +122,8 @@
 			);
 			name = MovieReviews;
 			packageProductDependencies = (
+				8EAF23C82E6A46E1002D3F14 /* FirebaseAuth */,
+				8EAF23CA2E6A46E1002D3F14 /* FirebaseFirestore */,
 			);
 			productName = MovieReviews;
 			productReference = 8E8C4ED72D53C3810065CE27 /* MovieReviews.app */;
@@ -195,6 +207,9 @@
 			);
 			mainGroup = 8E8C4ECE2D53C3810065CE27;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8EAF23C72E6A4456002D3F14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8E8C4ED82D53C3810065CE27 /* Products */;
 			projectDirPath = "";
@@ -212,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EAF23C62E6A42DD002D3F14 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +574,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8EAF23C72E6A4456002D3F14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8EAF23C82E6A46E1002D3F14 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EAF23C72E6A4456002D3F14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8EAF23CA2E6A46E1002D3F14 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EAF23C72E6A4456002D3F14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8E8C4ECF2D53C3810065CE27 /* Project object */;
 }

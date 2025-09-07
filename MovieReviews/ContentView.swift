@@ -8,12 +8,18 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel = ViewModel()
-        
-        var body: some View {
-            MovieRatingsView(viewModel: viewModel)
+    @StateObject var authVM = AuthViewModel()
+    
+    var body: some View {
+        if authVM.user != nil {
+            MovieRatingsView(viewModel: viewModel, authVM: authVM)
+        } else {
+            LoginView(authVM: authVM)
         }
+    }
 }
 
 #Preview {
     ContentView()
 }
+
