@@ -8,6 +8,13 @@ struct MovieRatingsView: View {
     @State private var showingReviews = false
     @State private var showNoReviewsAlert = false
     private let firestoreManager = FirestoreManager()
+    var averageRating: Double {
+        let reviews = viewModel.currentMovie.reviews
+        guard !reviews.isEmpty else { return 0.0 }
+        let total = reviews.reduce(0) { $0 + $1.rating }
+        return Double(total) / Double(reviews.count)
+    }
+
     
     var body: some View {
         ZStack {
@@ -49,6 +56,24 @@ struct MovieRatingsView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
+                    // Average Rating Display
+                    if averageRating > 0 {
+                        VStack {
+                            HStack(spacing: 2) {
+                                ForEach(1...5, id: \.self) { star in
+                                    Image(systemName: star <= Int(round(averageRating)) ? "star.fill" : "star")
+                                        .foregroundColor(.yellow)
+                                }
+                            }
+                            Text(String(format: "Average Rating: %.1f / 5", averageRating))
+                                .font(.subheadline)
+                                .bold()
+                                .foregroundColor(.white)
+                        }
+                        .padding(.bottom, 8)
+                    }
+
+                    // User’s star picker
                     HStack {
                         ForEach(1...5, id: \ .self) { star in
                             Image(systemName: star <= selectedRating ? "star.fill" : "star")
